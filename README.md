@@ -4,13 +4,6 @@
 
 This template uses [Vite](https://github.com/vitejs/vite/) as bundler and [Electron builder](https://www.electron.build/) as compiler. By default, the interface use **Vue**, but you can easily use any other frameworks such as **React**, **Preact**, **Angular** or anything else.
 
-## Support
-This template maintained by [Alex Kozack](https://github.com/cawa-93/). You can [💖 sponsor him](https://www.patreon.com/Kozack) for continued development of this template.
-
-If you have ideas, questions or suggestions - **Welcome to [discussions](https://github.com/cawa-93/vite-electron-builder/discussions)**. 😊
-
-## Features
-
 ### Electron
 - Template use the latest electron version with all the latest security patches.
 - The architecture of the application is built according to the security [guids](https://www.electronjs.org/docs/tutorial/security) and best practices.
