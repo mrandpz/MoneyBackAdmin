@@ -353,9 +353,9 @@
   dependencies:
     "@types/node" "*"
 
-"@typescript-eslint/eslint-plugin@^4.12.0":
+"@typescript-eslint/eslint-plugin@^4.13.0":
   version "4.13.0"
-  resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-4.13.0.tgz?cache=0&sync_timestamp=1610388248655&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40typescript-eslint%2Feslint-plugin%2Fdownload%2F%40typescript-eslint%2Feslint-plugin-4.13.0.tgz#5f580ea520fa46442deb82c038460c3dd3524bb6"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/eslint-plugin/download/@typescript-eslint/eslint-plugin-4.13.0.tgz#5f580ea520fa46442deb82c038460c3dd3524bb6"
   integrity sha1-X1gOpSD6RkQt64LAOEYMPdNSS7Y=
   dependencies:
     "@typescript-eslint/experimental-utils" "4.13.0"
