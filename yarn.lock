@@ -379,9 +379,9 @@
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^4.12.0":
+"@typescript-eslint/parser@^4.13.0":
   version "4.13.0"
-  resolved "https://registry.npm.taobao.org/@typescript-eslint/parser/download/@typescript-eslint/parser-4.13.0.tgz?cache=0&sync_timestamp=1610387802767&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40typescript-eslint%2Fparser%2Fdownload%2F%40typescript-eslint%2Fparser-4.13.0.tgz#c413d640ea66120cfcc37f891e8cb3fd1c9d247d"
+  resolved "https://registry.npm.taobao.org/@typescript-eslint/parser/download/@typescript-eslint/parser-4.13.0.tgz#c413d640ea66120cfcc37f891e8cb3fd1c9d247d"
   integrity sha1-xBPWQOpmEgz8w3+JHoyz/RydJH0=
   dependencies:
     "@typescript-eslint/scope-manager" "4.13.0"
