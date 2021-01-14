@@ -22,7 +22,7 @@
 
   <hr>
   <button @click="count++">
-    count is: {{ count }}
+    count is: {{ count }}1
   </button>
   <p>
     Edit
