@@ -16,77 +16,76 @@ const { join, relative } = require('path');
 const mode = process.env.MODE || 'development';
 
 function startElectron() {
-    const { spawn } = require('child_process');
+  const { spawn } = require('child_process');
 
-    const electronPath = require('electron');
+  const electronPath = require('electron');
 
-    return spawn(electronPath, [join(process.cwd(), 'dist/source/main/index.cjs.js')]);
+  return spawn(electronPath, [join(process.cwd(), 'dist/source/main/index.cjs.js')]);
 }
 
 (async () => {
-    // Create Vite dev server
-    console.log(process.env.PORT);
-    const server = await createServer({
-        mode,
-        configFile: join(process.cwd(), 'config/renderer.vite.js'),
-        server: {
-            port: process.env.VITE_DEV_SERVER_PORT,
-        },
+  // Create Vite dev server
+  const server = await createServer({
+    mode,
+    configFile: join(process.cwd(), 'config/renderer.vite.js'),
+    server: {
+      port: process.env.VITE_DEV_SERVER_PORT,
+    },
+  });
+
+  // Build preload entrypoint
+  const buildPreload = () => build({ mode, configFile: join(process.cwd(), 'config/preload.vite.js') });
+  await buildPreload();
+
+  // Watch `src/preload` and rebuild preload entrypoint
+  server.watcher.add(join(process.cwd(), 'src/preload/**'));
+  server.watcher.on('change', (file) => {
+    file = normalizePath(file);
+
+    if (!file.includes('/src/preload/')) {
+      return;
+    }
+
+    return buildPreload();
+  });
+
+  // Reload page on preload script change
+  server.watcher.add(join(process.cwd(), 'dist/source/preload/**'));
+  server.watcher.on('change', (file) => {
+    file = normalizePath(file);
+
+    if (!file.includes('/dist/source/preload/')) {
+      return;
+    }
+
+    server.ws.send({
+      type: 'full-reload',
+      path: '/' + slash(relative(server.config.root, file)),
     });
+  });
 
-    // Build preload entrypoint
-    const buildPreload = () => build({ mode, configFile: join(process.cwd(), 'config/preload.vite.js') });
-    await buildPreload();
+  // Run Vite server
+  await server.listen();
 
-    // Watch `src/preload` and rebuild preload entrypoint
-    server.watcher.add(join(process.cwd(), 'src/preload/**'));
-    server.watcher.on('change', (file) => {
-        file = normalizePath(file);
+  // Pass current Vite dev server port to Main process
+  process.env.VITE_DEV_SERVER_PORT = server.config.server.port;
 
-        if (!file.includes('/src/preload/')) {
-            return;
-        }
+  // Build main entrypoint
+  const buildMain = () => build({ mode, configFile: join(process.cwd(), 'config/main.vite.js') });
+  await buildMain();
 
-        return buildPreload();
-    });
+  // Watch `src/main` and rebuild main entrypoint
+  server.watcher.add(join(process.cwd(), 'src/main/**'));
+  server.watcher.on('change', (file) => {
+    file = normalizePath(file);
 
-    // Reload page on preload script change
-    server.watcher.add(join(process.cwd(), 'dist/source/preload/**'));
-    server.watcher.on('change', (file) => {
-        file = normalizePath(file);
+    if (!file.includes('/src/main/')) {
+      return;
+    }
 
-        if (!file.includes('/dist/source/preload/')) {
-            return;
-        }
+    return buildMain();
+  });
 
-        server.ws.send({
-            type: 'full-reload',
-            path: '/' + slash(relative(server.config.root, file)),
-        });
-    });
-
-    // Run Vite server
-    await server.listen();
-
-    // Pass current Vite dev server port to Main process
-    process.env.VITE_DEV_SERVER_PORT = server.config.server.port;
-
-    // Build main entrypoint
-    const buildMain = () => build({ mode, configFile: join(process.cwd(), 'config/main.vite.js') });
-    await buildMain();
-
-    // Watch `src/main` and rebuild main entrypoint
-    server.watcher.add(join(process.cwd(), 'src/main/**'));
-    server.watcher.on('change', (file) => {
-        file = normalizePath(file);
-
-        if (!file.includes('/src/main/')) {
-            return;
-        }
-
-        return buildMain();
-    });
-
-    // Run electron app
-    startElectron();
+  // Run electron app
+  startElectron();
 })();

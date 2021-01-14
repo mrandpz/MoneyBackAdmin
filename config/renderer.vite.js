@@ -1,6 +1,6 @@
-const {join} = require('path');
+const { join } = require('path');
 const vue = require('@vitejs/plugin-vue');
-const {chrome} = require('./electron-dep-versions');
+const { chrome } = require('./electron-dep-versions');
 /**
  * @type {import('vite').UserConfig}
  */
@@ -13,12 +13,13 @@ module.exports = {
   build: {
     target: `chrome${chrome}`,
     polyfillDynamicImport: false,
-    base: '',
+    base: './',
     outDir: '../../dist/source/renderer',
     assetsDir: '.',
     rollupOptions: {
       external: require('./external-packages').default,
     },
+
+    // publicPath,
   },
 };
-

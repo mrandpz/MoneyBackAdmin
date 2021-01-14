@@ -1,7 +1,7 @@
 #!/usr/bin/node
 console.time('Bundling time');
-const {build} = require('vite');
-const {join} = require('path');
+const { build } = require('vite');
+const { join } = require('path');
 
 const mode = process.env.MODE || 'production';
 
@@ -11,11 +11,10 @@ const entryPoints = [
   join(process.cwd(), 'config/renderer.vite.js'),
 ];
 
-
-const buildEntryPoint = (configFile) => build({configFile, mode});
+const buildEntryPoint = (configFile) => build({ configFile, mode });
 
 const generatePackageJson = () => {
-  const {writeFile} = require('fs/promises');
+  const { writeFile } = require('fs').promises;
   const packageJson = require(join(process.cwd(), 'package.json'));
 
   // Cleanup
@@ -24,7 +23,7 @@ const generatePackageJson = () => {
   // Remove all bundled dependencies
   // Keep only `external` dependencies
   delete packageJson.devDependencies;
-  const {default: external} = require('../config/external-packages');
+  const { default: external } = require('../config/external-packages');
   for (const type of ['dependencies', 'optionalDependencies']) {
     if (packageJson[type] === undefined) {
       continue;
@@ -38,17 +37,16 @@ const generatePackageJson = () => {
   }
 
   // Set version
-  const now = new Date;
+  const now = new Date();
   packageJson.version = `${now.getFullYear() - 2000}.${now.getMonth() + 1}.${now.getDate()}`;
 
   // Create new package.json
   return writeFile(join(process.cwd(), 'dist/source/package.json'), JSON.stringify(packageJson));
 };
 
-
 Promise.all(entryPoints.map(buildEntryPoint))
   .then(generatePackageJson)
-  .catch(e => {
+  .catch((e) => {
     console.error(e);
     process.exit(1);
   })

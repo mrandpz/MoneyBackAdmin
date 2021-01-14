@@ -7,6 +7,10 @@ module.exports = {
     /** @see https://eslint.vuejs.org/rules/ */
     'plugin:vue/vue3-recommended',
   ],
+  // todo
+  // globals: {
+  //   Element3: true,
+  // },
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 12,

@@ -6,11 +6,7 @@
  Therefore, such dependencies should be marked as "external":
  they will not be optimized, will not be included in your bundle, and will be delivered as a separate node module.
 */
-module.exports.external = [
-  'electron',
-  'electron-updater',
-];
-
+module.exports.external = ['electron', 'electron-updater', 'element3'];
 
 module.exports.builtins = [
   'assert',
@@ -53,7 +49,4 @@ module.exports.builtins = [
   'zlib',
 ];
 
-module.exports.default = [
-  ...module.exports.builtins,
-  ...module.exports.external,
-];
+module.exports.default = [...module.exports.builtins, ...module.exports.external];

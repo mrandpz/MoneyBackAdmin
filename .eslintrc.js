@@ -14,13 +14,8 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: [
-    '@typescript-eslint',
-  ],
-  ignorePatterns: [
-    'node_modules/**',
-    'dist/**',
-  ],
+  plugins: ['@typescript-eslint'],
+  ignorePatterns: ['node_modules/**', 'dist/**'],
 
   rules: {
     /**
@@ -38,6 +33,6 @@ module.exports = {
      * Just for beauty
      */
     quotes: ['warn', 'single'],
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 };
-
