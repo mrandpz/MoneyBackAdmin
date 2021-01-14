@@ -1510,10 +1510,10 @@ electron-publish@22.9.1:
     lazy-val "^1.0.4"
     mime "^2.4.6"
 
-electron-releases@^3.581.0:
-  version "3.584.0"
-  resolved "https://registry.npm.taobao.org/electron-releases/download/electron-releases-3.584.0.tgz#11c3ea67ab0bffdd84c9e6ccc866b1ff0fc6450c"
-  integrity sha1-EcPqZ6sL/92EyebMyGax/w/GRQw=
+electron-releases@^3.585.0:
+  version "3.585.0"
+  resolved "https://registry.npm.taobao.org/electron-releases/download/electron-releases-3.585.0.tgz#05e8c0cb7bb9e9d07da967143023c8ada4c92d9f"
+  integrity sha1-BejAy3u56dB9qWcUMCPIraTJLZ8=
 
 electron-updater@^4.3.5:
   version "4.3.5"
