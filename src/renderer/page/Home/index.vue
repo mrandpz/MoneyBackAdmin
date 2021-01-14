@@ -1,68 +1,9 @@
 <template>
   <el-container>
     <el-aside
-      width="250px"
-      style="background-color: rgb(238, 241, 246)"
+      class="miniScroll"
     >
       <el-menu :default-openeds="['1', '3']">
-        <el-submenu index="1">
-          <template #title>
-            <i class="el-icon-message" />导航一
-          </template>
-          <el-menu-item-group>
-            <template #title>
-              分组一
-            </template>
-            <el-menu-item index="1-1">
-              选项1
-            </el-menu-item>
-            <el-menu-item index="1-2">
-              选项2
-            </el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="1-3">
-              选项3
-            </el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="1-4">
-            <template #title>
-              选项4
-            </template>
-            <el-menu-item index="1-4-1">
-              选项4-1
-            </el-menu-item>
-          </el-submenu>
-        </el-submenu>
-        <el-submenu index="2">
-          <template #title>
-            <i class="el-icon-menu" />导航二
-          </template>
-          <el-menu-item-group>
-            <template #title>
-              分组一
-            </template>
-            <el-menu-item index="2-1">
-              选项1
-            </el-menu-item>
-            <el-menu-item index="2-2">
-              选项2
-            </el-menu-item>
-          </el-menu-item-group>
-          <el-menu-item-group title="分组2">
-            <el-menu-item index="2-3">
-              选项3
-            </el-menu-item>
-          </el-menu-item-group>
-          <el-submenu index="2-4">
-            <template #title>
-              选项4
-            </template>
-            <el-menu-item index="2-4-1">
-              选项4-1
-            </el-menu-item>
-          </el-submenu>
-        </el-submenu>
         <el-submenu index="3">
           <template #title>
             <i class="el-icon-setting" />导航三
@@ -92,72 +33,150 @@
             </el-menu-item>
           </el-submenu>
         </el-submenu>
+         <el-submenu index="2">
+          <template #title>
+            <i class="el-icon-setting" />导航三
+          </template>
+          <el-menu-item-group>
+            <template #title>
+              分组一
+            </template>
+            <el-menu-item index="3-1">
+              选项1
+            </el-menu-item>
+            <el-menu-item index="3-2">
+              选项2
+            </el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group title="分组2">
+            <el-menu-item index="3-3">
+              选项3
+            </el-menu-item>
+          </el-menu-item-group>
+          <el-submenu index="3-4">
+            <template #title>
+              选项4
+            </template>
+            <el-menu-item index="3-4-1">
+              选项4-1
+            </el-menu-item>
+          </el-submenu>
+           <el-submenu index="1">
+          <template #title>
+            <i class="el-icon-setting" />导航三
+          </template>
+          <el-menu-item-group>
+            <template #title>
+              分组一
+            </template>
+            <el-menu-item index="3-1">
+              选项1
+            </el-menu-item>
+            <el-menu-item index="3-2">
+              选项2
+            </el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group title="分组2">
+            <el-menu-item index="3-3">
+              选项3
+            </el-menu-item>
+          </el-menu-item-group>
+          <el-submenu index="3-4">
+            <template #title>
+              选项4
+            </template>
+            <el-menu-item index="3-4-1">
+              选项4-1
+            </el-menu-item>
+          </el-submenu>
+        </el-submenu>
+         <el-submenu index="3">
+          <template #title>
+            <i class="el-icon-setting" />导航三
+          </template>
+          <el-menu-item-group>
+            <template #title>
+              分组一
+            </template>
+            <el-menu-item index="3-1">
+              选项1
+            </el-menu-item>
+            <el-menu-item index="3-2">
+              选项2
+            </el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group title="分组2">
+            <el-menu-item index="3-3">
+              选项3
+            </el-menu-item>
+          </el-menu-item-group>
+          <el-submenu index="3-4">
+            <template #title>
+              选项4
+            </template>
+            <el-menu-item index="3-4-1">
+              选项4-1
+            </el-menu-item>
+          </el-submenu>
+        </el-submenu>
+        </el-submenu>
       </el-menu>
     </el-aside>
-
-    <el-container>
-      <el-header style="text-align: right; font-size: 12px">
-        <el-dropdown>
-          <i
-            class="el-icon-setting"
-            style="margin-right: 15px"
-          />
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>查看</el-dropdown-item>
-              <el-dropdown-item>新增</el-dropdown-item>
-              <el-dropdown-item>删除</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-        <span>王小虎</span>
-      </el-header>
-
-      <el-main>
-        <el-table :data="tableData">
-          <el-table-column
-            prop="date"
-            label="日期"
-            width="140"
-          />
-          <el-table-column
-            prop="name"
-            label="姓名"
-            width="120"
-          />
-          <el-table-column
-            prop="address"
-            label="地址"
-          />
-        </el-table>
+    <el-header>
+      <ArticleTab />
+    </el-header>
+    <el-container class="container">
+      <el-main class="miniScroll">
+        <div>富文本编辑器</div>
       </el-main>
     </el-container>
   </el-container>
 </template>
 
 <script lang="ts">
+  import ArticleTab from './components/ArticleTab.vue';
   export default {
-    data() {
-      const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄',
-      };
-      return {
-        tableData: Array(20).fill(item),
-      };
+    components:{
+      ArticleTab,
     },
+    data() {
+      return {};
+    },
+    
   };
 </script>
 
-<style>
+<style lang="less" scoped>
+  @import '../../index.less';
   .el-header {
-    background-color: #b3c0d1;
     color: #333;
-    line-height: 60px;
+    // line-height: @headerHeight;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9998;
+    padding-left: @siderWidth;
+    display: flex;
+    border-top:1px solid @lineColor
   }
-
+  .container{
+    margin-left: 250px;
+    box-sizing: border-box;
+  }
+  .el-main{
+    margin-top: @headerHeight;
+    height: calc(100vh - @headerHeight);
+  }
   .el-aside {
     color: #333;
+    position: fixed;
+    z-index: 9999;
+    height: 100%;
+    left: 0;
+    background: #fff;
+    width: 250px!important;
+  }
+  .el-menu{
+    height: 100%;
   }
 </style>

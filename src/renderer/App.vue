@@ -9,9 +9,15 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style lang="less">
+@import './index.less';
+
 body{
   margin: 0;
   padding: 0;
+  overflow: hidden;
+}
+.miniScroll {
+  .reset-scroll-mixin()
 }
 </style>
