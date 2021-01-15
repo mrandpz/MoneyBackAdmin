@@ -5,12 +5,18 @@
     </el-button>
   </div> -->
   <el-tabs v-model="editableTabsValue" type="card" closable class="reset-tabs" @tab-remove="removeTab">
-    <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name" />
+    <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name">
+      <Editor/>
+    </el-tab-pane>
   </el-tabs>
 </template>
 <script>
 import { reactive, toRefs } from 'vue';
+import Editor from './Editor.vue';
 export default {
+  components: {
+    Editor,
+  },
   setup() {
     const state = reactive({
       editableTabsValue: '2',

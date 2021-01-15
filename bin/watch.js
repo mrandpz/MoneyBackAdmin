@@ -14,6 +14,7 @@ const { createServer, build, normalizePath } = require('vite');
 const { join, relative } = require('path');
 
 const mode = process.env.MODE || 'development';
+const PORT = 3001;
 
 function startElectron() {
   const { spawn } = require('child_process');
@@ -29,7 +30,7 @@ function startElectron() {
     mode,
     configFile: join(process.cwd(), 'config/renderer.vite.js'),
     server: {
-      port: process.env.VITE_DEV_SERVER_PORT,
+      port: PORT,
     },
   });
 

@@ -4,12 +4,9 @@
       <Search />
       <FileList />
     </el-aside>
-    <el-header>
-      <ArticleTab />
-    </el-header>
     <el-container class="container">
       <el-main class="miniScroll">
-        <div>富文本编辑器</div>
+        <ArticleTab />
       </el-main>
     </el-container>
   </el-container>
@@ -19,6 +16,7 @@
 import ArticleTab from './components/ArticleTab.vue';
 import Search from './components/Search.vue';
 import FileList from './components/FileList.vue';
+
 export default {
   components: {
     ArticleTab,
@@ -49,8 +47,8 @@ export default {
   box-sizing: border-box;
 }
 .el-main {
-  margin-top: @headerHeight;
-  height: calc(100vh - @headerHeight);
+  height: 100vh;
+  padding: 0;
 }
 .el-aside {
   color: #333;
