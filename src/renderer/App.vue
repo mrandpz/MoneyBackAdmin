@@ -1,10 +1,15 @@
 <template>
   <router-view />
+  <TodoList />
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import { defineComponent } from 'vue';
+import TodoList from './components/TodoList.vue';
 export default defineComponent({
+  components: {
+    TodoList,
+  },
   name: 'App',
 });
 </script>
@@ -12,12 +17,12 @@ export default defineComponent({
 <style lang="less">
 @import './index.less';
 
-body{
+body {
   margin: 0;
   padding: 0;
   overflow: hidden;
 }
 .miniScroll {
-  .reset-scroll-mixin()
+  .reset-scroll-mixin();
 }
 </style>

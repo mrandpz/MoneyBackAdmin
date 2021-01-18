@@ -3,6 +3,7 @@
     <el-aside class="miniScroll">
       <Search />
       <FileList />
+      <NewAndImport />
     </el-aside>
     <el-container class="container">
       <el-main class="miniScroll">
@@ -16,12 +17,13 @@
 import ArticleTab from './components/ArticleTab.vue';
 import Search from './components/Search.vue';
 import FileList from './components/FileList.vue';
-
+import NewAndImport from './components/NewAndImport.vue';
 export default {
   components: {
     ArticleTab,
     Search,
     FileList,
+    NewAndImport,
   },
   data() {
     return {};
@@ -37,7 +39,7 @@ export default {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 9998;
+  z-index: 998;
   padding-left: @siderWidth;
   display: flex;
   border-top: 1px solid @lineColor;
@@ -53,7 +55,7 @@ export default {
 .el-aside {
   color: #333;
   position: fixed;
-  z-index: 9999;
+  z-index: 999;
   height: 100%;
   left: 0;
   background: #fff;
