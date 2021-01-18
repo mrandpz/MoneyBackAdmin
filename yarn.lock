@@ -871,13 +871,6 @@ aws4@^1.8.0:
   resolved "https://registry.npm.taobao.org/aws4/download/aws4-1.11.0.tgz?cache=0&sync_timestamp=1604101311814&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faws4%2Fdownload%2Faws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha1-1h9G2DslGSUOJ4Ta9bCUeai0HFk=
 
-axios@^0.21.1:
-  version "0.21.1"
-  resolved "https://registry.npm.taobao.org/axios/download/axios-0.21.1.tgz?cache=0&sync_timestamp=1608611162952&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Faxios%2Fdownload%2Faxios-0.21.1.tgz#22563481962f4d6bde9a76d516ef0e5d3c09b2b8"
-  integrity sha1-IlY0gZYvTWvemnbVFu8OXTwJsrg=
-  dependencies:
-    follow-redirects "^1.10.0"
-
 balanced-match@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npm.taobao.org/balanced-match/download/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
@@ -1537,10 +1530,10 @@ electron-publish@22.9.1:
     lazy-val "^1.0.4"
     mime "^2.4.6"
 
-electron-releases@^3.581.0:
-  version "3.584.0"
-  resolved "https://registry.npm.taobao.org/electron-releases/download/electron-releases-3.584.0.tgz#11c3ea67ab0bffdd84c9e6ccc866b1ff0fc6450c"
-  integrity sha1-EcPqZ6sL/92EyebMyGax/w/GRQw=
+electron-releases@^3.587.0:
+  version "3.587.0"
+  resolved "https://registry.npm.taobao.org/electron-releases/download/electron-releases-3.587.0.tgz#b46389c4ae92f604a8a13d45538a89a0960ea7d9"
+  integrity sha1-tGOJxK6S9gSooT1FU4qJoJYOp9k=
 
 electron-updater@^4.3.5:
   version "4.3.5"
@@ -1915,11 +1908,6 @@ flatted@^3.1.0:
   version "3.1.0"
   resolved "https://registry.npm.taobao.org/flatted/download/flatted-3.1.0.tgz#a5d06b4a8b01e3a63771daa5cb7a1903e2e57067"
   integrity sha1-pdBrSosB46Y3cdqly3oZA+LlcGc=
-
-follow-redirects@^1.10.0:
-  version "1.13.1"
-  resolved "https://registry.npm.taobao.org/follow-redirects/download/follow-redirects-1.13.1.tgz?cache=0&sync_timestamp=1607916833378&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ffollow-redirects%2Fdownload%2Ffollow-redirects-1.13.1.tgz#5f69b813376cee4fd0474a3aba835df04ab763b7"
-  integrity sha1-X2m4Ezds7k/QR0o6uoNd8Eq3Y7c=
 
 forever-agent@~0.6.1:
   version "0.6.1"
