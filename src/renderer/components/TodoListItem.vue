@@ -9,7 +9,7 @@
 
 <script>
 import { onMounted, ref } from 'vue';
-import request from '../utils/request';
+import request,{abort} from '../utils/request';
 export default {
   setup() {
     const checked = ref(true);
@@ -24,6 +24,7 @@ export default {
     request('/todolist/search').then((res) => {
       this.todolist = res;
     });
+    abort();
   },
 };
 </script>
