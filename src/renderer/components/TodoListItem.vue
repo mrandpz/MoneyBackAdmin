@@ -21,10 +21,9 @@ export default {
     };
   },
   mounted() {
-    request('/todolist/search').then((res) => {
+    request({url:'/todolist/search'}).then((res) => {
       this.todolist = res;
     });
-    abort();
   },
 };
 </script>

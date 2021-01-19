@@ -8,13 +8,20 @@ function abortableFetch() {
     abort: () => {
       controller.abort();
     },
-    request: (url, data, method = 'POST') => {
-      url = baseURL + url;
-      return fetch(url, {
+    request: (params) => {
+      const { url, data, method = 'POST', options = {} } = params;
+      let requestURL;
+      if (typeof params === 'string') {
+        requestURL = baseURL + params;
+      } else {
+        requestURL = baseURL + url;
+      }
+      return fetch(requestURL, {
         body: JSON.stringify(data), // must match 'Content-Type' header
         headers: {},
         method: method, // *GET, POST, PUT, DELETE, etc.
         signal,
+        ...options,
       })
         .then((response) => response.json())
         .catch((err) => {
