@@ -1,3 +1,11 @@
+/*
+ * @Author: Mr.pz 
+ * @Date: 2021-01-20 00:06:37 
+ * @Last Modified by: Mr.pz
+ * @Last Modified time: 2021-01-20 00:07:08
+ * TODO: download
+ */
+
 const baseURL = 'http://server.babaloveyou.com';
 
 function abortableFetch() {
