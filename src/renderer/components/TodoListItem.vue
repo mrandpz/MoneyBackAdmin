@@ -17,7 +17,7 @@
 
 <script>
 import { onMounted, ref } from 'vue';
-import request,{abort} from '../utils/request';
+import {searchTodoList,addTodo,updateTodo} from '../utils/commonApi';
 export default {
   data() {
     return {
@@ -29,9 +29,8 @@ export default {
     this.getList();
   },
   methods:{
-    // TODO 接口挪到外面处理
     getList(){
-      request({url:'/todolist/search'}).then((res) => {
+      searchTodoList().then((res) => {
         this.todolist = res;
       });
     },
@@ -39,7 +38,7 @@ export default {
       if(!this.addTodo){
         return;
       }
-      request({url:'/todolist/add',data:{title:this.addTodo}}).then((res) => {
+      addTodo({title:this.addTodo}).then((res) => {
         if(res){
           this.addTodo = '';
           this.getList();
@@ -48,9 +47,8 @@ export default {
     },
     handleCheck(value){
       // todo: delete -> update done to false
-      request({url:'/todolist/delete',data:{_id:value}}).then((res) => {
+      updateTodo({_id:value}).then((res) => {
         if(res){
-          this.addTodo = '';
           this.getList();
         }
       });

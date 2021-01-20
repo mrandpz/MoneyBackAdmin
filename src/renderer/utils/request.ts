@@ -4,6 +4,7 @@
  * @Last Modified by: Mr.pz
  * @Last Modified time: 2021-01-20 00:07:08
  * TODO: download
+ * 如果没有传 needCode，就直接返回 data
  */
 
 const baseURL = 'http://server.babaloveyou.com';
