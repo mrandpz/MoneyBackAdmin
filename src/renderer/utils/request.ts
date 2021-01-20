@@ -1,6 +1,6 @@
 /*
- * @Author: Mr.pz 
- * @Date: 2021-01-20 00:06:37 
+ * @Author: Mr.pz
+ * @Date: 2021-01-20 00:06:37
  * @Last Modified by: Mr.pz
  * @Last Modified time: 2021-01-20 00:07:08
  * TODO: download
@@ -17,7 +17,7 @@ function abortableFetch() {
       controller.abort();
     },
     request: (params) => {
-      const { url, data, method = 'POST', options = {} } = params;
+      const { url, data, method = 'POST', needCode, options = {} } = params;
       let requestURL;
       if (typeof params === 'string') {
         requestURL = baseURL + params;
@@ -32,6 +32,16 @@ function abortableFetch() {
         ...options,
       })
         .then((response) => response.json())
+        .then((res) => {
+          const { code, data = 'success' } = res;
+          if (code === 200) {
+            if (needCode) {
+              return res;
+            }
+            return data;
+          }
+          throw new Error('request faild');
+        })
         .catch((err) => {
           console.warn(err);
         }); // parses response to JSON
