@@ -31,7 +31,6 @@ export default {
   margin: auto;
   width: 100px;
   height: 50px;
-  background: forestgreen;
   z-index: 998;
   cursor: pointer;
   .center();

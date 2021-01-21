@@ -18,15 +18,13 @@ import ArticleTab from './components/ArticleTab.vue';
 import Search from './components/Search.vue';
 import FileList from './components/FileList.vue';
 import NewAndImport from './components/NewAndImport.vue';
+import UseTestSlot from './components/UseTestSlot.vue';
 export default {
   components: {
     ArticleTab,
     Search,
     FileList,
     NewAndImport,
-  },
-  data() {
-    return {};
   },
 };
 </script>

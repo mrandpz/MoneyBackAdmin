@@ -46,7 +46,6 @@ export default {
       });
     },
     handleCheck(value){
-      // todo: delete -> update done to false
       updateTodo({_id:value}).then((res) => {
         if(res){
           this.getList();
