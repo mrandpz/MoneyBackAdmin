@@ -50,9 +50,12 @@ export default {
     display: flex;
     &:hover {
       background: @activeBgColor;
+      .deleteArcticle{
+        display: flex;
+      }
     }
     .deleteArcticle {
-      display: flex;
+      display: none;
       align-items: center;
       width: 30px;
       cursor: pointer;
