@@ -1,47 +1,28 @@
 <template>
   <ul class="list-container">
-    <li class="list">
-      <div v-show="!isInputActive" class="resetInput" @click="changeIsInputActive(true)">{{ inputValue }}</div>
-      <input
-        ref="inputRef"
-        v-show="isInputActive"
-        v-model="inputValue"
-        @blur="changeIsInputActive(false)"
-        class="resetInput"
-      />
-      <i
-        class="el-icon-delete deleteArcticle"
-        :class="{ deleteForInputColor: isInputActive }"
-        @click="deleteArcticle"
-      ></i>
-    </li>
+    <template v-for="item in siderFiles" :key="item._id">
+      <FileListItem data="item"/>
+    </template>
   </ul>
+  {{initvalue}}
 </template>
 <script>
+import {mapState,mapGetters} from 'vuex';
+import FileListItem from './FileListItem.vue';
+
 export default {
-  data() {
-    return {
-      inputValue: '2',
-      isInputActive: false,
-    };
+  components:{
+    FileListItem,
   },
-  methods: {
-    changeIsInputActive(isActive) {
-      this.isInputActive = isActive;
-      if (isActive) {
-        this.$nextTick(function () {
-          this.$refs.inputRef.focus();
-        });
-      }
-    },
-    deleteArcticle() {
-      console.log('delete arcticle');
-    },
-  },
+  computed:{
+    ...mapGetters([
+        'siderFiles',
+    ])
+  }
 };
 </script>
-<style lang="less" scoped>
-@import '../../../index.less';
+<style lang="less">
+@import '../../../styles/index.less';
 .list-container {
   margin: 0;
   padding: 0;

@@ -15,7 +15,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-@import './index.less';
+@import './styles/index.less';
 
 body {
   margin: 0;

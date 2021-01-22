@@ -67,7 +67,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import '../../../index.less';
+@import '../../../styles/index.less';
 .reset-tabs {
   margin-left: -2px;
   margin-top: -1px;

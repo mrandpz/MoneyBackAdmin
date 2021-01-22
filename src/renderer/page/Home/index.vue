@@ -4,6 +4,7 @@
       <Search />
       <FileList />
       <NewAndImport />
+      <!-- <UseTestSlot/> -->
     </el-aside>
     <el-container class="container">
       <el-main class="miniScroll">
@@ -25,12 +26,13 @@ export default {
     Search,
     FileList,
     NewAndImport,
+    // UseTestSlot,
   },
 };
 </script>
 
 <style lang="less" scoped>
-@import '../../index.less';
+@import '../../styles/index.less';
 .el-header {
   color: #333;
   // line-height: @headerHeight;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    这是一个slot的探索组件{{someProps}}
+    这是一个slot的{{count}}探索组件{{someProps}}
     <slot name="suffix"></slot>
     <div class="append" @click="handleClick" v-if="$slots.append">
         <slot name="append"></slot>
@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRef } from "vue";
+import { defineComponent, reactive, toRef,computed } from "vue";
+import { useStore } from 'vuex';
 
 export default defineComponent({
   name:'TestSlot',
@@ -21,6 +22,7 @@ export default defineComponent({
   },
   emits:['appendClick'],
   setup(props,ctx){
+    const store = useStore()
     
     const state = reactive({
       someVisible:false
@@ -32,6 +34,7 @@ export default defineComponent({
     };
 
     return {
+      count: computed(() => store.state.count),
       someVisible: toRef(state,'someVisible'),
       handleClick
     };

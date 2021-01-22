@@ -22,7 +22,7 @@ export default {
 };
 </script>
 <style lang="less" scoped>
-@import '../index.less';
+@import '../styles/index.less';
 .fix-element {
   position: fixed;
   right: 0;
