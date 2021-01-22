@@ -1,24 +1,21 @@
 <template>
   <ul class="list-container">
     <template v-for="item in siderFiles" :key="item._id">
-      <FileListItem data="item"/>
+      <FileListItem :dataSource="item" />
     </template>
   </ul>
-  {{initvalue}}
 </template>
 <script>
-import {mapState,mapGetters} from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import FileListItem from './FileListItem.vue';
 
 export default {
-  components:{
+  components: {
     FileListItem,
   },
-  computed:{
-    ...mapGetters([
-        'siderFiles',
-    ])
-  }
+  computed: {
+    ...mapGetters(['siderFiles']),
+  },
 };
 </script>
 <style lang="less">
@@ -31,7 +28,7 @@ export default {
     display: flex;
     &:hover {
       background: @activeBgColor;
-      .deleteArcticle{
+      .deleteArcticle {
         display: flex;
       }
     }

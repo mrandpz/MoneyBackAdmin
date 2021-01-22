@@ -21,7 +21,7 @@ type ID = string | number;
 type TITLE = string;
 type CONTENT = string;
 
-interface FileJSON {
+export interface FileJSON {
   _id: ID;
   title: TITLE;
   content: CONTENT;
@@ -59,8 +59,8 @@ export default createStore<IState>({
           content: 'c',
         },
       ],
-      siderIds: ['x'],
-      tabIds: [],
+      siderIds: ['x','a'],
+      tabIds: ['x'],
       unsaveIds: [],
     };
   },
@@ -77,6 +77,13 @@ export default createStore<IState>({
       const { unsaveIds, files } = state;
       return findByIncludeId(files, unsaveIds);
     },
+  },
+  mutations: {
+    //  todo：用actions
+    deleteById(state,payload) {
+      state.files = state.files.filter(it => it._id !== payload);
+    },
+    
   },
   // state() {
   //   return {

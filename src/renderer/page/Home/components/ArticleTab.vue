@@ -4,15 +4,17 @@
       add tab
     </el-button>
   </div> -->
+  {{ tabFiles }}
   <el-tabs v-model="editableTabsValue" type="card" closable class="reset-tabs" @tab-remove="removeTab">
-    <el-tab-pane v-for="(item, index) in editableTabs" :key="item.name" :label="item.title" :name="item.name">
-      <Editor/>
+    <el-tab-pane v-for="item in tabFiles" :key="item._id" :label="item.title" :name="item.title">
+      <Editor />
     </el-tab-pane>
   </el-tabs>
 </template>
 <script>
-import { reactive, toRefs } from 'vue';
+import { reactive, toRefs, computed, onMounted } from 'vue';
 import Editor from './Editor.vue';
+import { useStore } from 'vuex';
 export default {
   components: {
     Editor,
@@ -33,6 +35,12 @@ export default {
         },
       ],
       tabIndex: 2,
+    });
+
+    const store = useStore();
+
+    onMounted(() => {
+      console.log(state);
     });
 
     const addTab = (targetName) => {
@@ -62,7 +70,7 @@ export default {
       state.editableTabsValue = activeName;
       state.editableTabs = tabs.filter((tab) => tab.name !== targetName);
     };
-    return { ...toRefs(state), addTab, removeTab };
+    return { ...toRefs(state), tabFiles: computed(() => store.getters.tabFiles), addTab, removeTab };
   },
 };
 </script>
