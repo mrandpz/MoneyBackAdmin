@@ -1,76 +1,46 @@
 <template>
-  <!-- <div style="margin-bottom: 20px;">
-    <el-button size="small" @click="addTab(editableTabsValue)">
-      add tab
-    </el-button>
-  </div> -->
   {{ tabFiles }}
   <el-tabs v-model="editableTabsValue" type="card" closable class="reset-tabs" @tab-remove="removeTab">
-    <el-tab-pane v-for="item in tabFiles" :key="item._id" :label="item.title" :name="item.title">
+    <el-tab-pane v-for="item in tabFiles" :key="item._id" :label="item.title" :name="item._id">
       <Editor />
     </el-tab-pane>
   </el-tabs>
 </template>
 <script>
 import { reactive, toRefs, computed, onMounted } from 'vue';
+import { ElTabs } from 'element3';
 import Editor from './Editor.vue';
 import { useStore } from 'vuex';
 export default {
   components: {
     Editor,
+    ElTabs,
   },
   setup() {
     const state = reactive({
-      editableTabsValue: '2',
-      editableTabs: [
-        {
-          title: 'Tab 1',
-          name: '1',
-          content: 'Tab 1 content',
-        },
-        {
-          title: 'Tab 2',
-          name: '2',
-          content: 'Tab 2 content',
-        },
-      ],
-      tabIndex: 2,
+      editableTabsValue: '',
     });
-
     const store = useStore();
-
-    onMounted(() => {
-      console.log(state);
-    });
-
-    const addTab = (targetName) => {
-      let newTabName = ++state.tabIndex + '';
-      state.editableTabs.push({
-        title: 'New Tab',
-        name: newTabName,
-        content: 'New Tab content',
-      });
-      state.editableTabsValue = newTabName;
-    };
+    const tabFiles = computed(() => store.getters.tabFiles);
 
     const removeTab = (targetName) => {
-      let tabs = state.editableTabs;
+      let tabs = tabFiles.value;
       let activeName = state.editableTabsValue;
+      // 如果删除的正好是高亮的tab
       if (activeName === targetName) {
         tabs.forEach((tab, index) => {
-          if (tab.name === targetName) {
+          if (tab._id === targetName) {
             let nextTab = tabs[index + 1] || tabs[index - 1];
             if (nextTab) {
-              activeName = nextTab.name;
+              activeName = nextTab._id;
             }
           }
         });
       }
-
       state.editableTabsValue = activeName;
-      state.editableTabs = tabs.filter((tab) => tab.name !== targetName);
+      store.commit('deleteTbaById', targetName);
     };
-    return { ...toRefs(state), tabFiles: computed(() => store.getters.tabFiles), addTab, removeTab };
+    return { ...toRefs(state), tabFiles, removeTab };
   },
 };
 </script>

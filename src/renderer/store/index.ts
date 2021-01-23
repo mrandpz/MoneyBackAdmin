@@ -2,7 +2,7 @@
  * @Author: Mr.pz
  * @Date: 2021-01-22 13:28:05
  * @Last Modified by: Mr.pz
- * @Last Modified time: 2021-01-22 15:01:18
+ * @Last Modified time: 2021-01-23 20:13:11
  * files 数据设计
  * files 为完整的数据结构如：
  * [{
@@ -60,7 +60,7 @@ export default createStore<IState>({
         },
       ],
       siderIds: ['x','a'],
-      tabIds: ['x'],
+      tabIds: ['x','a'],
       unsaveIds: [],
     };
   },
@@ -83,7 +83,9 @@ export default createStore<IState>({
     deleteById(state,payload) {
       state.files = state.files.filter(it => it._id !== payload);
     },
-    
+    deleteTbaById(state,payload) {
+      state.tabIds = state.tabIds.filter(it => it !== payload);
+    }
   },
   // state() {
   //   return {

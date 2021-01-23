@@ -13,7 +13,7 @@ module.exports = {
   build: {
     target: `chrome${chrome}`,
     polyfillDynamicImport: false,
-    base: './',
+    base: '/',
     outDir: '../../dist/source/renderer',
     assetsDir: '.',
     rollupOptions: {
