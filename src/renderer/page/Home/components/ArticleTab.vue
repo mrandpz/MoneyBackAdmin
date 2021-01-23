@@ -8,13 +8,11 @@
 </template>
 <script>
 import { reactive, toRefs, computed, onMounted } from 'vue';
-import { ElTabs } from 'element3';
 import Editor from './Editor.vue';
 import { useStore } from 'vuex';
 export default {
   components: {
     Editor,
-    ElTabs,
   },
   setup() {
     const state = reactive({
