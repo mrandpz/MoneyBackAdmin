@@ -5,12 +5,17 @@
 </template>
 
 <script>
-import { onMounted, onBeforeUnmount, ref, reactive } from 'vue';
+import { onMounted, onBeforeUnmount, ref, reactive, defineComponent } from 'vue';
 import WangEditor from 'wangeditor';
 
-export default {
+export default defineComponent({
   name: 'Editor',
-  setup() {
+  props: {
+    initContent: {
+      type: String,
+    }, // Object 修改为 FILEJSON
+  },
+  setup(props) {
     const editor = ref();
     const content = reactive({
       html: '',
@@ -26,6 +31,7 @@ export default {
         },
       });
       instance.create();
+      instance.txt.html(props.initContent);
     });
 
     onBeforeUnmount(() => {
@@ -43,7 +49,7 @@ export default {
       content,
     };
   },
-};
+});
 </script>
 <style lang="less">
 // 因为Modal 的 z-index 只有1002

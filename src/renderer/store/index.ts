@@ -2,7 +2,7 @@
  * @Author: Mr.pz
  * @Date: 2021-01-22 13:28:05
  * @Last Modified by: Mr.pz
- * @Last Modified time: 2021-01-23 20:13:11
+ * @Last Modified time: 2021-01-23 22:52:54
  * files 数据设计
  * files 为完整的数据结构如：
  * [{
@@ -59,7 +59,7 @@ export default createStore<IState>({
           content: 'c',
         },
       ],
-      siderIds: ['x','a'],
+      siderIds: [],
       tabIds: ['x','a'],
       unsaveIds: [],
     };
@@ -67,7 +67,10 @@ export default createStore<IState>({
   getters: {
     siderFiles(state) {
       const { siderIds, files } = state;
-      return findByIncludeId(files, siderIds);
+      if(siderIds.length){
+        return findByIncludeId(files, siderIds);
+      }
+      return files;
     },
     tabFiles(state) {
       const { tabIds, files } = state;
@@ -79,6 +82,10 @@ export default createStore<IState>({
     },
   },
   mutations: {
+    addFile(state,payload){
+      state.files.push(payload);
+      console.log(state)
+    },
     //  todo：用actions
     deleteById(state,payload) {
       state.files = state.files.filter(it => it._id !== payload);

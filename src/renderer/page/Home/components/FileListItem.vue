@@ -1,6 +1,8 @@
 <template>
   <li class="list">
-    <div v-show="!isInputActive" class="resetInput" @click="changeIsInputActive(true)">{{ dataSource.title }}</div>
+    <div v-show="!isInputActive" class="resetInput" @dblclick="changeIsInputActive(true)" @click="open">
+      {{ dataSource.title }}
+    </div>
     <input
       ref="inputRef"
       v-show="isInputActive"
@@ -41,6 +43,9 @@ export default {
     },
     deleteArcticle(id) {
       this.deleteById(id);
+    },
+    open() {
+      // 追加tab
     },
   },
   mounted() {
