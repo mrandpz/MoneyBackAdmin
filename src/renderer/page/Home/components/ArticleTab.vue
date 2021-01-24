@@ -21,7 +21,7 @@ export default {
     });
     const store = useStore();
 
-    state.editableTabsValue = tabFiles.value[0]._id;
+    state.editableTabsValue = tabFiles?.value?.[0]?._id;
     const removeTab = (targetName) => {
       let tabs = tabFiles.value;
       let activeName = state.editableTabsValue;
