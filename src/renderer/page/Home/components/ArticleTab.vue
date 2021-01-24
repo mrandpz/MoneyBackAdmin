@@ -1,5 +1,4 @@
 <template>
-  <!-- bug 无法动态修改label 关闭第一个tab显示异常 -->
   <el-tabs v-model="editableTabsValue" type="card" closable class="reset-tabs" @tab-remove="removeTab">
     <el-tab-pane v-for="item in tabFiles" :key="item._id" :label="item.title" :name="item._id">
       <Editor :initContent="item.content" />
