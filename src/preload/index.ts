@@ -1,12 +1,13 @@
-import {ContextBridge, contextBridge} from 'electron';
-
+import {ContextBridge, contextBridge,ipcRenderer} from 'electron';
+import * as fs  from 'fs';
 const apiKey = 'electron';
-
 /**
  * @see https://github.com/electron/electron/issues/21437#issuecomment-573522360
  */
 const api = {
   versions: process.versions,
+  fs:fs,
+  getAppPath:()=> ipcRenderer.sendSync('get-app-path')
 } as const;
 
 

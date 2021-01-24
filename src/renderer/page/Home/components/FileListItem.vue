@@ -19,6 +19,7 @@
 </template>
 <script>
 import { mapMutations } from 'vuex';
+import { useElectron } from '@/use/electron';
 export default {
   props: {
     dataSource: Object, // Object 修改为 FILEJSON
@@ -50,6 +51,8 @@ export default {
   },
   mounted() {
     this.inputValue = this.dataSource.title;
+    const { getAppPath } = useElectron();
+    console.log(getAppPath());
   },
 };
 </script>

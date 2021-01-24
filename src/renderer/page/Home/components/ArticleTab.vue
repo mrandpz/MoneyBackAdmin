@@ -15,12 +15,14 @@ export default {
     Editor,
   },
   setup() {
+    const tabFiles = computed(() => store.getters.tabFiles);
+
     const state = reactive({
       editableTabsValue: '',
     });
     const store = useStore();
-    const tabFiles = computed(() => store.getters.tabFiles);
 
+    state.editableTabsValue = tabFiles.value[0]._id;
     const removeTab = (targetName) => {
       let tabs = tabFiles.value;
       let activeName = state.editableTabsValue;

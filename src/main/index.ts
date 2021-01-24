@@ -1,6 +1,7 @@
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow,ipcMain } from 'electron';
 import { join } from 'path';
 import { format } from 'url';
+import {getAppPath} from './ipcHelper';
 
 const gotTheLock = app.requestSingleInstanceLock();
 
@@ -28,12 +29,13 @@ if (!gotTheLock) {
     let mainWindow: BrowserWindow | null = null;
 
     async function createWindow() {
+        getAppPath();
         mainWindow = new BrowserWindow({
             show: false,
             webPreferences: {
                 preload: join(__dirname, '../preload/index.cjs.js'),
                 contextIsolation: env.MODE !== 'test', // Spectron tests can't work with contextIsolation: true
-                enableRemoteModule: env.MODE === 'test', // Spectron tests can't work with enableRemoteModule: false
+                //前提是开启nodeIntegration,enableRemoteModule: true才会与效果// 需要获取到文件夹目录进行读写，所以改为true
             },
         });
 
@@ -78,6 +80,7 @@ if (!gotTheLock) {
         .then(createWindow)
         .catch((e) => console.error('Failed create window:', e));
 
+        
     // Auto-updates
     if (env.PROD) {
         app.whenReady()
