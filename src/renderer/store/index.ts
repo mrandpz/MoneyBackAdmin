@@ -2,7 +2,7 @@
  * @Author: Mr.pz
  * @Date: 2021-01-22 13:28:05
  * @Last Modified by: Mr.pz
- * @Last Modified time: 2021-01-23 22:52:54
+ * @Last Modified time: 2021-01-25 21:24:32
  * files 数据设计
  * files 为完整的数据结构如：
  * [{
@@ -16,6 +16,8 @@
  */
 
 import { createStore } from 'vuex';
+import { useElectron } from '@/use/electron';
+import { FILES } from './KEYS';
 
 type ID = string | number;
 type TITLE = string;
@@ -44,30 +46,21 @@ function findByIncludeId(files: FileJSON[], ids: ID[]) {
     .filter((it) => it);
 }
 
+const { getStore, setStore } = useElectron();
+
 export default createStore<IState>({
   state() {
     return {
-      files: [
-        {
-          _id: 'x',
-          title: 'y',
-          content: 'z',
-        },
-        {
-          _id: 'a',
-          title: 'b',
-          content: 'c',
-        },
-      ],
+      files: getStore(FILES) || [],
       siderIds: [],
-      tabIds: ['x','a'],
+      tabIds: ['x', 'a'],
       unsaveIds: [],
     };
   },
   getters: {
     siderFiles(state) {
       const { siderIds, files } = state;
-      if(siderIds.length){
+      if (siderIds.length) {
         return findByIncludeId(files, siderIds);
       }
       return files;
@@ -82,17 +75,17 @@ export default createStore<IState>({
     },
   },
   mutations: {
-    addFile(state,payload){
+    addFile(state, payload) {
       state.files.push(payload);
-      console.log(state)
+      console.log(state);
     },
     //  todo：用actions
-    deleteById(state,payload) {
-      state.files = state.files.filter(it => it._id !== payload);
+    deleteById(state, payload) {
+      state.files = state.files.filter((it) => it._id !== payload);
     },
-    deleteTbaById(state,payload) {
-      state.tabIds = state.tabIds.filter(it => it !== payload);
-    }
+    deleteTbaById(state, payload) {
+      state.tabIds = state.tabIds.filter((it) => it !== payload);
+    },
   },
   // state() {
   //   return {

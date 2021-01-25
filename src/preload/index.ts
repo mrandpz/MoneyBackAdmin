@@ -1,21 +1,22 @@
-import {ContextBridge, contextBridge,ipcRenderer} from 'electron';
-import * as fs  from 'fs';
+import { ContextBridge, contextBridge, ipcRenderer } from 'electron';
+import * as fs from 'fs';
+import store from './store';
+
 const apiKey = 'electron';
 /**
  * @see https://github.com/electron/electron/issues/21437#issuecomment-573522360
  */
 const api = {
   versions: process.versions,
-  fs:fs,
-  getAppPath:()=> ipcRenderer.sendSync('get-app-path')
+  fs: fs,
+  getAppPath: () => ipcRenderer.sendSync('get-app-path'),
+  setStore: (key: string, obj: any) => store.set(key, obj),
+  getStore: (key: string) => store.get(key),
 } as const;
-
 
 export type ExposedInMainWorld = Readonly<typeof api>;
 
-
 if (import.meta.env.MODE !== 'test') {
-
   /**
    * The "Main World" is the JavaScript context that your main renderer code runs in.
    * By default, the page you load in your renderer executes code in this world.
@@ -23,10 +24,8 @@ if (import.meta.env.MODE !== 'test') {
    * @see https://www.electronjs.org/docs/api/context-bridge
    */
   contextBridge.exposeInMainWorld(apiKey, api);
-
-
 } else {
-  type API = Parameters<ContextBridge['exposeInMainWorld']>[1]
+  type API = Parameters<ContextBridge['exposeInMainWorld']>[1];
 
   /**
    * Recursively Object.freeze() on objects and functions
@@ -36,11 +35,13 @@ if (import.meta.env.MODE !== 'test') {
   function deepFreeze<T extends API>(obj: T): Readonly<T> {
     Object.freeze(obj);
 
-    Object.getOwnPropertyNames(obj).forEach(prop => {
-      if (obj.hasOwnProperty(prop)
-        && obj[prop] !== null
-        && (typeof obj[prop] === 'object' || typeof obj[prop] === 'function')
-        && !Object.isFrozen(obj[prop])) {
+    Object.getOwnPropertyNames(obj).forEach((prop) => {
+      if (
+        obj.hasOwnProperty(prop) &&
+        obj[prop] !== null &&
+        (typeof obj[prop] === 'object' || typeof obj[prop] === 'function') &&
+        !Object.isFrozen(obj[prop])
+      ) {
         deepFreeze(obj[prop]);
       }
     });

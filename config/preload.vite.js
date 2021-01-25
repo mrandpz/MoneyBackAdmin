@@ -1,12 +1,12 @@
-const {join} = require('path');
-const {chrome} = require('./electron-dep-versions');
+const { join } = require('path');
+const { chrome } = require('./electron-dep-versions');
 
 /**
  * @type {import('vite').UserConfig}
  */
 module.exports = {
   alias: {
-    '/@/': join(process.cwd(), './src/preload') + '/',
+    '@/': join(process.cwd(), './src/preload') + '/',
   },
   build: {
     target: `chrome${chrome}`,
