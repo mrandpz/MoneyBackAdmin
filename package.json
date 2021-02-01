@@ -34,7 +34,7 @@
     "vite": "^2.0.0-beta.48"
   },
   "dependencies": {
-    "electron-store": "6.0.0",
+    "electron-store": "7.0.0",
     "electron-updater": "^4.3.5",
     "element-plus": "^1.0.2-beta.28",
     "less-loader": "^7.2.1",
