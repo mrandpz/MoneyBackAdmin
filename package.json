@@ -37,7 +37,7 @@
     "electron-store": "6.0.0",
     "electron-updater": "^4.3.5",
     "element-plus": "^1.0.2-beta.28",
-    "less-loader": "^7.2.1",
+    "less-loader": "^8.0.0",
     "lodash": "^4.17.20",
     "vue": "^3.0.5",
     "vue-router": "^4.0.2",
